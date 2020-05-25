@@ -1,64 +1,110 @@
+body {
+    background-color: rgb(15, 14, 3);  
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 #saida {
-    width: 25rem;
+    width: 28rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: rgb(20, 20, 20);
+    color: white;
 }
 #comandos {
-    height: 35%;
-    padding: 20px; 
-    display: flex;  
-    flex-direction: row; 
-    justify-content: space-around;
+    width: 25rem;
+    background-color: rgb(34, 31, 24);
 }
 
-#conteiner {
-    height: 65%;
+#quadro {
+    height: 500px;
+    width: 550px;
+    border: 3px solid rgb(41, 41, 23);
+    background-color: rgb(103, 105, 44);
+    box-shadow: 6px 3px 3px rgb(37, 39, 13);
+    border-radius: 2%;
+    margin-left:  5px;
+    align-self: center;
+}
+
+.bloco, .deletavel {
+    border: 3px solid black;
+    margin: 2px;
+}
+
+.deletavel {
+    font-size: 2rem;
+    background-color: rgb(82, 34, 3);
 }
 
 
 #flex-conteiner{
-    display: flex;
-    flex-direction: column;
-    width: 21.2rem;
-    border: solid 5px brown;
-    border-bottom-right-radius: 3%;
-    border-bottom-left-radius: 3%;
+    width: 16rem;
+    height: 17rem;
+    border: 2px solid rgb(103, 105, 44);
+    background-color: rgb(41, 41, 23);
+    border-radius: 2%;
 }
 
-.item-conteiner1, .item-conteiner2, .item-conteiner3 {
-    width: 15rem;
-    height: 13.5rem;
-    display: flex;
-    flex-direction: column;
-    border: solid 5px brown;
-    border-bottom-right-radius: 3%;
-    border-bottom-left-radius: 3%;
+.item-conteiner {
+    width: 7.5rem;
+    height: 10.5rem;
+    margin: 1px;
+    border: solid 5px rgb(82, 34, 3);
+    background-color: rgb(41, 41, 23);
+    border-radius: 5%;
+}
+.flex-item{
+    background-color: rgb(41, 41, 23);
+    box-shadow: 5px 3px 3px rgb(77, 80, 46);
+    margin: 5px;
+}
+.flex-item span {
+    color: white;
+}
+.flex-item span h5 {
+    background-color: rgb(82, 34, 3);
 }
 
-span h4 {
+span h5 {
     position: relative;
     justify-content: space-around;
-    background-color: brown;
+    background-color: rgb(103, 105, 44);
 }
 
-#flex-direction, #flex-wrap, #justify-content, #align-items, #align-content, #align-self{
-    width: 110px;
+#flexdirection, #flexwrap, #justifycontent, #alignitems, #aligncontent, #alignself{
+    width: 7rem;
 }
 
-#corpo-flex-conteiner , .corpo-item-conteiner1, .corpo-item-conteiner2, .corpo-item-conteiner3{
+#corpo-flex-conteiner{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-#corpo-flex-conteiner span, .item-conteiner1 span , .item-conteiner2 span, .item-conteiner3 span{
-    background-color: brown;
+#corpo-flex-conteiner span{
+    background-color: rgb(103, 105, 44);
+    width: 120px;
+    border-radius: 5%;
     margin-bottom:  10px;
     padding: 2px;
+    box-shadow: 3px 3px 5px rgb(34, 11, 11);
 }
 .flex-grow input {
-    width: 215px;
+    width: 95px;
+}
+#esquerda, #direita {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.flex-grow {
-    width: 220px;
+#direita {
+    width: 35rem;
+}
+#esquerda {
+    width: 45rem;
 }
