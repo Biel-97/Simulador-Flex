@@ -41,6 +41,7 @@ body {
 
 
 #flex-conteiner{
+    margin: 10px;
     width: 16rem;
     height: 17rem;
     border: 2px solid rgb(103, 105, 44);
@@ -59,7 +60,7 @@ body {
 .flex-item{
     background-color: rgb(41, 41, 23);
     box-shadow: 5px 3px 3px rgb(77, 80, 46);
-    margin: 5px;
+    margin: 3px;
 }
 .flex-item span {
     color: white;
@@ -107,4 +108,10 @@ span h5 {
 }
 #esquerda {
     width: 45rem;
+}
+#controle {
+    height: 150px;
+    width: 150px;
+    border: 2px solid gold;
+    background-color: rgb(41, 41, 23);
 }

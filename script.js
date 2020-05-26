@@ -36,6 +36,7 @@ $(document).ready(function () {
     if (num < 0) {
         num = 1
     }
+    
     let del = 2
     if (del <= 1) {
         del = 2
@@ -51,15 +52,57 @@ $(document).ready(function () {
         }
         num++
     }
-    bloco(true)
 
-    items(1)
+  
+    // bloco(true)
+    // items(1)
 
-
-    // retorna na saida o valor e id  do select
+    // retorna na sada o valor e id  do select
     //selecionar o "pai" para monstrar a fonte das configuraçoes
     $('select').on('change', function () {
             $('#saida').html('<h2>#flex-conteiner { ' + $(this).attr('propriedade') + ': ' + $(this).val() + ';<br>' + '}</h2>');
         console.log($(this).val())
     });
+    $('<div>').insertBefore('#comandos').attr('id', 'controle')
+    $('#controle').html('<button id="adicionar" type="button" class="btn btn-success">Adicionar</button><button id = "remover" type="button" class="btn btn-danger">Remover</button>')
+    $('#controle').addClass("d-flex flex-column justify-content-around flex-wrap align-items-center")
+
+
+    //ajustar a criação e remoção de itens
+    //ajustar os numeros dos itens
+    $('#controle').on('click', 'button', function () {
+        if ($(this).attr('id') === 'adicionar') {
+            if (num <= 12) { //limita a criação de  12 itens 
+                bloco(true)
+                del++
+                items(num)
+                num++
+            }
+        } else if ($(this).attr('id') === 'remover') {
+            if (num > 1) {
+                del = del - 1
+                num = num - 1
+                $(`#deletavel-${del}`).remove()
+                $(`#out-item-${del}`).remove()
+                $('.item-conteiner:last-child').remove()
+            }
+        }
+    })
+
+    $('#flex-conteiner').on('change', 'select', function (e) {
+        if (this.value !== 'Selecione') {
+            if ($(this).attr('propriedade') == 'flexDirection') {
+                document.querySelector('#quadro').style.flexDirection = $(this).val()
+            } else if ($(this).attr('propriedade') == 'flexWrap') {
+                document.querySelector('#quadro').style.flexWrap = $(this).val()
+            } else if ($(this).attr('propriedade') == 'justifyContent') {
+                document.querySelector('#quadro').style.justifyContent = $(this).val()
+            } else if ($(this).attr('propriedade') == 'alignItems') {
+                document.querySelector('#quadro').style.alignItems = $(this).val()
+            } else if ($(this).attr('propriedade') == 'alignContent') {
+                document.querySelector('#quadro').style.alignContent = $(this).val()
+            }
+        }
+    })
+
 })
