@@ -20,7 +20,6 @@ $(document).ready(function () {
     opcoes('justifyContent', '#corpo-flex-conteiner', 'justify-content', 'flex-start', 'flex-end', 'space-around', 'space-between', 'center')
     opcoes('alignItems', '#corpo-flex-conteiner', 'align-items', 'stretch', 'flex-start', 'baseline', 'flex-end', 'center')
     opcoes('alignContent', '#corpo-flex-conteiner', 'align-content', 'flex-start', 'flex-end', 'center', 'space-around', 'space-between')
-
     //flex-item
     function items(numero) {
         $('<div>').appendTo('#comandos').addClass('flex-item font-weight-bold item-conteiner d-flex flex-column flex-wrap').attr('id', 'itemconteiner-' + numero)
@@ -36,11 +35,12 @@ $(document).ready(function () {
     if (num < 0) {
         num = 1
     }
-    
-    let del = 2
-    if (del <= 1) {
-        del = 2
+
+    let del = 1
+    if (del <= 0) {
+        del = 1
     }
+
     //blocos
     function bloco(deletavel = false, altura = 70, largura = 70) {
         if (deletavel) {
@@ -50,17 +50,14 @@ $(document).ready(function () {
             $('<div>').appendTo('#quadro').addClass('bloco').attr('id', 'bloco' + num).height(altura).width(largura)
             $('#bloco' + num).addClass('d-flex justify-content-center align-items-center').html(`<h2 class="alert-heading">${num}</h2>`)
         }
-        num++
     }
 
-  
-    // bloco(true)
-    // items(1)
+
 
     // retorna na sada o valor e id  do select
     //selecionar o "pai" para monstrar a fonte das configuraçoes
     $('select').on('change', function () {
-            $('#saida').html('<h2>#flex-conteiner { ' + $(this).attr('propriedade') + ': ' + $(this).val() + ';<br>' + '}</h2>');
+        $('#saida').html('<h2>#flex-conteiner { ' + $(this).attr('propriedade') + ': ' + $(this).val() + ';<br>' + '}</h2>');
         console.log($(this).val())
     });
     $('<div>').insertBefore('#comandos').attr('id', 'controle')
@@ -68,8 +65,6 @@ $(document).ready(function () {
     $('#controle').addClass("d-flex flex-column justify-content-around flex-wrap align-items-center")
 
 
-    //ajustar a criação e remoção de itens
-    //ajustar os numeros dos itens
     $('#controle').on('click', 'button', function () {
         if ($(this).attr('id') === 'adicionar') {
             if (num <= 12) { //limita a criação de  12 itens 
@@ -83,7 +78,6 @@ $(document).ready(function () {
                 del = del - 1
                 num = num - 1
                 $(`#deletavel-${del}`).remove()
-                $(`#out-item-${del}`).remove()
                 $('.item-conteiner:last-child').remove()
             }
         }

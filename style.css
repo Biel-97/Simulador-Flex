@@ -41,7 +41,6 @@ body {
 
 
 #flex-conteiner{
-    margin: 10px;
     width: 16rem;
     height: 17rem;
     border: 2px solid rgb(103, 105, 44);
@@ -110,8 +109,26 @@ span h5 {
     width: 45rem;
 }
 #controle {
-    height: 150px;
-    width: 150px;
-    border: 2px solid gold;
+    margin-left: 5px;
+    height: 100px;
+    width: 130px;
+    border: 2px solid rgb(57, 58, 23);
     background-color: rgb(41, 41, 23);
+    border-radius: 10%;
+}
+
+#flex-conteiner, #controle {
+    margin-top: 10px;
+    box-shadow: 0px 0px 25px rgb(37, 39, 13);
+}
+#comandos {
+    width: 25rem;
+    background-color: rgb(34, 31, 24);
+}
+#saida, #comandos {
+    margin: 5px;
+    padding: 10px;
+    border: 3px solid rgb(41, 41, 23);
+    box-shadow: 0px 0px 25px rgb(37, 39, 13);
+    border-radius: 3%;
 }
