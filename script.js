@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    
     function opcoes(propriedade, local, nome, ...options) {
         const conteiner_select = $('<span>').text(nome).addClass('d-flex flex-column')
         const select = $('<select>').addClass('custom-select').attr('id', nome)
@@ -10,7 +10,6 @@ $(document).ready(function () {
             $('#' + nome).append('<option>' + item + '</option>');
         })
     }
-
     //flex-conteiner
     $('<div>').appendTo('#esquerda').attr('id', 'flex-conteiner').addClass('font-weight-bold d-flex flex-column')
     $('#flex-conteiner').append($('<span>').html('<h5>Flex-Conteiner</h5>'))
@@ -35,12 +34,10 @@ $(document).ready(function () {
     if (num < 0) {
         num = 1
     }
-
     let del = 1
     if (del <= 0) {
         del = 1
     }
-
     //blocos
     function bloco(deletavel = false, altura = 70, largura = 70) {
         if (deletavel) {
@@ -51,23 +48,60 @@ $(document).ready(function () {
             $('#bloco' + num).addClass('d-flex justify-content-center align-items-center').html(`<h2 class="alert-heading">${num}</h2>`)
         }
     }
+    //adciona a output as propriedades dos blocos
+    function output_items() {
+        
+        $('.flex-item').each(function (e) {
+            let retorno = {}
+
+            $(this).on('change', 'select', function () {
+                nome = $(this).closest('[data-id]').data('id')
+                retorno.align_self = $(this).val()
+                let deletavel = '#deletavel-' + $(this).attr('id').split('-')[1]
+                output_add(nome)
+                document.querySelector(deletavel).style.alignSelf = $(this).val()
+
+            })
+            $(this).on('change', 'input', function () {
+                if ($(this).val() >= 0) {
+                    let nome = $(this).closest('[data-id]').data('id');
+                    let deletavel = '#deletavel-' + nome.split('-')[1]
+                    retorno.flex_Grow = $(this).val()
+                    output_add(nome)
+                    document.querySelector(deletavel).style.flexGrow = $(this).val()
+                    
+                }
+            })
+            function output_add(nome) {
+                if ($(`#out-${nome}`).length == '0') {
+                    $(`<div id="out-${nome}">`).text(`#${nome} {`).append('<br>').appendTo('#output')
+                    Object.entries(retorno).forEach(([chave, valor]) => {
+                        $(`#out-${nome}`).append(`<span class ="${chave}">${chave.replace('_', '-')}: ${valor};</span>`).append('<br><span class="fim">}</span>')
+                    })
+                } else {
+                    $(`#out-${nome} .fim`).remove()
+                    Object.entries(retorno).forEach(([chave, valor]) => {
+                        if($(`#out-${nome} .${chave}`).length == '0') {
+                            $(`#out-${nome}`).append(`<span class ="${chave}">${chave.replace('_', '-')}: ${valor};</span>`).append('<br> }')
+                        }
+                        $(`#out-${nome} .${chave}`).html(`<span>${chave.replace('_', '-')}: ${valor};</span>`) 
+                        
+                    })
+
+                }
+            }
+        })
 
 
-
-    // retorna na sada o valor e id  do select
-    //selecionar o "pai" para monstrar a fonte das configuraçoes
-    $('select').on('change', function () {
-        $('#saida').html('<h2>#flex-conteiner { ' + $(this).attr('propriedade') + ': ' + $(this).val() + ';<br>' + '}</h2>');
-        console.log($(this).val())
-    });
-    $('<div>').insertBefore('#comandos').attr('id', 'controle')
+    }
+    //Controlador que adiciona ou remove um bloco
+    $('<div>').prependTo('#direita').attr('id', 'controle')
     $('#controle').html('<button id="adicionar" type="button" class="btn btn-success">Adicionar</button><button id = "remover" type="button" class="btn btn-danger">Remover</button>')
     $('#controle').addClass("d-flex flex-column justify-content-around flex-wrap align-items-center")
-
-
     $('#controle').on('click', 'button', function () {
+
         if ($(this).attr('id') === 'adicionar') {
-            if (num <= 12) { //limita a criação de  12 itens 
+            if (num <= 14) {//limite de 14 itens criados
                 bloco(true)
                 del++
                 items(num)
@@ -81,8 +115,9 @@ $(document).ready(function () {
                 $('.item-conteiner:last-child').remove()
             }
         }
-    })
+        output_items()
 
+    })
     $('#flex-conteiner').on('change', 'select', function (e) {
         if (this.value !== 'Selecione') {
             if ($(this).attr('propriedade') == 'flexDirection') {
@@ -98,5 +133,40 @@ $(document).ready(function () {
             }
         }
     })
-
+    //Ativação do select do flex-conteiner \/
+    function output_conteiner() {
+        let retorno = {
+            flex_Direction: 'row',
+            flex_Wrap: 'noWrap',
+            justify_Content: 'flex-start',
+            align_Items: 'stretch',
+            align_Content: 'flex-start'
+        }
+        Object.entries(retorno).forEach(([chave, valor]) => {
+            $('#out-flex-conteiner').append(`<span class ="${chave}">${chave.replace('_', '-')}: ${valor};</span>`).append('<br>')
+        })
+        $('#out-flex-conteiner').append('<span style="left: 2px">}</span>')
+        $('select').on('change', '', function (e) {
+            if (this.value !== 'Selecione') {
+                let nome = $(this).closest('[data-id]').data('id');
+                let propriedade = $(this).attr('id')
+                let propriedade_valor = $(this).val()
+                if (propriedade == 'flex-direction') {
+                    retorno.flex_Direction = propriedade_valor
+                } else if (propriedade == 'flex-wrap') {
+                    retorno.flex_Wrap = propriedade_valor
+                } else if (propriedade == 'justify-content') {
+                    retorno.justify_Content = propriedade_valor
+                } else if (propriedade == 'align-items') {
+                    retorno.align_Items = propriedade_valor
+                } else if (propriedade == 'align-content') {
+                    retorno.align_Content = propriedade_valor
+                }
+                Object.entries(retorno).forEach(([chave, valor]) => {
+                    $(`.${chave}`).html(`<span>${chave.replace('_', '-')}: ${valor};</span>`)
+                })
+            }
+        })
+    }
+    output_conteiner()
 })
