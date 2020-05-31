@@ -1,37 +1,44 @@
 body {
     background-color: rgb(15, 14, 3);  
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-#output {
-    width: 28rem;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    background-color: rgb(20, 20, 20);
-    color: white;
 }
 
-#comandos {
-    width: 25rem;
-    background-color: rgb(34, 31, 24);
-
-}
 #output, #comandos {
+    display: flex;
     margin: 5px;
+    padding: 10px;
     border: 3px solid rgb(41, 41, 23);
     box-shadow: 0px 0px 25px rgb(37, 39, 13);
     border-radius: 3%;
 }
+#output {
+    width: 21rem;
+    height: 33rem;
+    flex-wrap: wrap;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    overflow-y: auto;
+}
+
+#comandos {
+    width: 52rem;
+    height: 15rem;
+    background-color: rgb(34, 31, 24);
+    resize: horizontal;
+    overflow-x: auto;
+    position: relative;
+    align-self: center;    
+}
+
 
 #output span {
     position: relative;
 }
+#output div {
+    margin-left: 5px;
+}
 
 #controle {
-    margin-left: 5px;
+    margin-top: 10px;
     height: 100px;
     width: 130px;
     border: 2px solid rgb(57, 58, 23);
@@ -40,15 +47,16 @@ body {
 }
 
 #quadro {
-    height: 500px;
     width: 550px;
+    margin-bottom: 10px;
+    top: 150px;
     border: 3px solid rgb(41, 41, 23);
     background-color: rgb(103, 105, 44);
     box-shadow: 6px 3px 3px rgb(37, 39, 13);
     border-radius: 2%;
     margin-left:  5px;
-    align-self: center;
 }
+
 .bloco, .deletavel {
     border: 3px solid black;
     margin: 2px;
@@ -67,15 +75,13 @@ body {
     border-radius: 2%;
 }
 #flex-conteiner, #controle {
-    margin-top: 10px;
     box-shadow: 0px 0px 25px rgb(37, 39, 13);
-
 }
 
 .item-conteiner {
     width: 7.5rem;
     height: 10.5rem;
-    margin: 1px;
+    margin: 5px;
     border: solid 5px rgb(82, 34, 3);
     background-color: rgb(41, 41, 23);
     border-radius: 5%;
@@ -83,6 +89,7 @@ body {
 
 .flex-item span h5 {
     background-color: rgb(82, 34, 3);
+;
 }
 span h5 {
     position: relative;
@@ -115,22 +122,49 @@ span h5 {
 
 .flex-item{
     background-color: rgb(41, 41, 23);
-    box-shadow: 5px 3px 3px rgb(77, 80, 46);
-    margin: 5px;
+    box-shadow: 3px 3px 3px rgb(77, 80, 46);
+    margin: 3px;
+    width: 105px;
+}
+.flex-item select {
+    width:94px
 }
 .flex-item span {
     color: white;
 }
 
-#esquerda, #direita {
+#esquerda {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-#direita {
-    width: 35rem;
-}
 #esquerda {
-    width: 45rem;
+    width: 37rem;
+}
+
+#copiar {
+    height: 35px;
+    width: 70px;
+    position: absolute;
+    display: flex;
+    align-self: flex-start;
+    margin-left: 220px;
+    margin-top: -5px;
+    box-shadow: 0px 0px 25px rgb(37, 39, 13);  
+}
+
+img {
+    align-self: flex-start;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border: 2px solid rgb(34, 28, 19);
+    border-radius: 50%;
+    z-index: 2;
+
+}
+
+#teste {
+    height: 30rem;
 }
