@@ -10,8 +10,7 @@ $(document).ready(function () {
         })
     }
     //flex-conteiner
-    $('<div>').appendTo('#esquerda').attr('id', 'flex-conteiner').addClass('font-weight-bold d-flex flex-column')
-    $('#flex-conteiner').appendTo($('<div>').addClass('d-flex flex-column align-items-center justify-content-around').attr('id', 'teste').appendTo('#esquerda'))
+    $('<div>').appendTo('#teste').attr('id', 'flex-conteiner').addClass('font-weight-bold d-flex flex-column')
     $('#flex-conteiner').append($('<span>').html('<h5>Flex-Conteiner</h5>'))
     $('<div>').appendTo('#flex-conteiner').attr('id', 'corpo-flex-conteiner').attr('data-id', 'flex-conteiner')
     opcoes('flexDirection', '#corpo-flex-conteiner', 'flex-direction', 'row', 'column', 'row-reverse', 'column-reverse')
@@ -108,7 +107,7 @@ $(document).ready(function () {
     }
     copiar()
     //Controlador que adiciona ou remove um bloco
-    $('<div>').insertAfter('#flex-conteiner').attr('id', 'controle')
+    $('<div>').insertBefore('#flex-conteiner').attr('id', 'controle')
     $('#controle').html('<button id="adicionar" type="button" class="btn btn-success">Adicionar</button><button id = "remover" type="button" class="btn btn-danger">Remover</button>')
     $('#controle').addClass("d-flex flex-column justify-content-around flex-wrap align-items-center")
 

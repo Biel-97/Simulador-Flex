@@ -1,32 +1,33 @@
 body {
     background-color: rgb(15, 14, 3);  
+    overflow-x:hidden
 }
 
 #output, #comandos {
     display: flex;
-    margin: 5px;
-    padding: 10px;
+    margin: 15px;
     border: 3px solid rgb(41, 41, 23);
     box-shadow: 0px 0px 25px rgb(37, 39, 13);
     border-radius: 3%;
-}
-#output {
-    width: 21rem;
-    height: 33rem;
     flex-wrap: wrap;
+}
+
+#output {
+    width: 19rem;
+    height: 30rem;
     background-color: rgb(20, 20, 20);
     color: white;
     overflow-y: auto;
+    z-index: 2;
 }
 
 #comandos {
-    width: 52rem;
-    height: 15rem;
+    width: 30rem;
+    height: 22rem;
     background-color: rgb(34, 31, 24);
-    resize: horizontal;
     overflow-x: auto;
     position: relative;
-    align-self: center;    
+    align-self: flex-start;    
 }
 
 
@@ -38,23 +39,28 @@ body {
 }
 
 #controle {
-    margin-top: 10px;
+    margin-bottom: 10px;
     height: 100px;
     width: 130px;
     border: 2px solid rgb(57, 58, 23);
     background-color: rgb(41, 41, 23);
     border-radius: 10%;
+    align-self: center;
+}
+#teste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #quadro {
-    width: 550px;
-    margin-bottom: 10px;
-    top: 150px;
+    width: 29rem;
+    height: 30rem;
+    margin: 15px;
     border: 3px solid rgb(41, 41, 23);
     background-color: rgb(103, 105, 44);
     box-shadow: 6px 3px 3px rgb(37, 39, 13);
     border-radius: 2%;
-    margin-left:  5px;
 }
 
 .bloco, .deletavel {
@@ -63,7 +69,6 @@ body {
 }
 
 .deletavel {
-    font-size: 2rem;
     background-color: rgb(82, 34, 3);
 }
 
@@ -150,7 +155,7 @@ span h5 {
     display: flex;
     align-self: flex-start;
     margin-left: 220px;
-    margin-top: -5px;
+    margin-top: 2px;
     box-shadow: 0px 0px 25px rgb(37, 39, 13);  
 }
 
@@ -162,9 +167,62 @@ img {
     border: 2px solid rgb(34, 28, 19);
     border-radius: 50%;
     z-index: 2;
-
 }
 
-#teste {
-    height: 30rem;
+@media (max-width:816px) {
+    #output {
+        width: 17rem;
+        height: 27rem;
+        margin: 10px;
+    }
+    #copiar {
+        height: 33px;
+        margin-left: 190px;
+        margin-top: 0px;
+    }
+    #quadro {
+        margin: 10px;
+        width: 24rem;
+        height: 27rem;
+    }
+    #comandos {
+        width: 23rem;
+        height: 25rem;
+        margin: 10px;
+    }
+    #flex-conteiner {
+        width: 16rem;
+        height: 17rem;
+    }
+    button h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width:700px) {
+    #output {
+        width: 14rem;
+    }
+    #copiar {
+        margin-left: 135px;
+    }
+    #quadro {
+        margin: 5px;
+        width: 16rem;
+    }
+    #comandos {
+        width: 19rem;
+        height: 35rem;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+    }
+    #flex-conteiner {
+        width: 9rem;
+        height: 26rem;
+    }
+    button h1 {
+        font-size: 0.9rem;
+    }
 }
